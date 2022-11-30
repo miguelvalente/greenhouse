@@ -16,10 +16,10 @@ from tqdm import tqdm, trange
 from dataset import Weather
 from model import Lights
 
-greenhouse = pd.read_parquet(r'challenge/GreenhouseClimate.parquet')
-production = pd.read_parquet(r'challenge/Production.parquet')
-resources = pd.read_parquet(r'challenge/Resources.parquet')
-weather = pd.read_parquet(r'challenge/Weather.parquet')
+greenhouse = pd.read_parquet(r'data/GreenhouseClimate.parquet')
+production = pd.read_parquet(r'data/Production.parquet')
+resources = pd.read_parquet(r'data/Resources.parquet')
+weather = pd.read_parquet(r'data/Weather.parquet')
 # Print datatypes
 print(weather.dtypes)
 
