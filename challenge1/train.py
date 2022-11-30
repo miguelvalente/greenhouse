@@ -1,5 +1,7 @@
    
 from datetime import datetime
+import sys
+sys.path.append('../') 
 
 import numpy as np
 import pandas as pd
@@ -16,10 +18,10 @@ from tqdm import tqdm, trange
 from dataset import Weather
 from model import Lights
 
-greenhouse = pd.read_parquet(r'data/GreenhouseClimate.parquet')
-production = pd.read_parquet(r'data/Production.parquet')
-resources = pd.read_parquet(r'data/Resources.parquet')
-weather = pd.read_parquet(r'data/Weather.parquet')
+greenhouse = pd.read_parquet(paths.greenhouse)
+production = pd.read_parquet(paths.production)
+resources = pd.read_parquet(paths.resources)
+weather = pd.read_parquet(paths.weather)
 # Print datatypes
 print(weather.dtypes)
 

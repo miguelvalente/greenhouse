@@ -1,5 +1,7 @@
    
 from datetime import datetime, timedelta
+import sys
+sys.path.append('../') 
 
 import numpy as np
 import pandas as pd
@@ -14,20 +16,23 @@ from tqdm import tqdm, trange
 from dataset import Resources
 from model import ContributionRNN
 
-greenhouse = pd.read_parquet(r'challenge/GreenhouseClimate.parquet')
-production = pd.read_parquet(r'challenge/Production.parquet')
-resources = pd.read_parquet(r'challenge/Resources.parquet')
-weather = pd.read_parquet(r'challenge/Weather.parquet')
+greenhouse = pd.read_parquet(paths.greenhouse)
+production = pd.read_parquet(paths.production)
+resources = pd.read_parquet(paths.resources)
+weather = pd.read_parquet(paths.weather)
+
 def print_deets(df):
     print(df.dtypes)
     print(df.isna().sum())
     print(df.head(-1))
+
 def nan_details(df, treshold = 0):
     nans = list(df.isnull().sum())
     nan_cols = [ (col, nans[idx]) for idx, col in enumerate(df.columns) if nans[idx] > treshold]
     print(*nan_cols, sep='\n')
     to_drop = [col for col, nan in nan_cols]
     return to_drop
+
 #Matches string values of Nan and replaces with np.nan
 df = greenhouse
 df = df.replace(['^ +NaN'], np.nan, regex=True)
